@@ -24,7 +24,7 @@ jobs:
 
       - name: Start Kafka with docker-compose
         run: |
-          docker compose -f docker-compose.test.yml up -d
+          docker compose -f ../docker-compose.test.yml up -d
           echo "Waiting for Kafka..."
           sleep 20
 
