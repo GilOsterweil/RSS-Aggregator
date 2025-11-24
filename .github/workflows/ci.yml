@@ -31,6 +31,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Wait for Kafka
+        run: |
+          for i in {1..30}; do
+            nc -z localhost 9092 && echo "Kafka is up!" && exit 0
+            sleep 2
+          done
+          echo "Kafka did not start in 60 seconds."
+          exit 1
+
       - name: Run tests        
         run: export PYTHONPATH=$PWD && pytest -vv
           
