@@ -32,9 +32,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests        
-        run: 
-          export PYTHONPATH=$PWD
-          pytest -vv
+        run: export PYTHONPATH=$PWD && pytest -vv
+          
 
       - name: Build Docker image
         run: docker build -t my-kafka-service:latest .
